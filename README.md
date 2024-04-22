@@ -68,11 +68,11 @@ RoI Pooling은 Fast R-CNN 논문에서 제안된 알고리즘으로 region propo
 #### Sharing Features for RPN and Fast R-CNN
 RPN을 통해 region proposals를 추출하고, Fast R-CNN을 통해 Detection을 하는 2-stage detection model의 구조 상 training 과정 역시 두번 나눠서 진행될 수 밖에 없었습니다. 그러나 저자는 **두 model이 unified된 Network**를 발전시키고자 하였고, **RPN과 Fast R-CNN의 convolution layer를 공유**시킬 수 있는 방법을 고안하였습니다. 저자는 이를 위해 여러 방면의 방법을 고민하였지만 **Alternating training** 방법을 선택하였습니다.
 > **Alternating training**
-- RPN을 먼저 학습하고, proposals을 Fast R-CNN 학습에 활용합니다.
-- network는 Fast R-CNN에 의해 tuning되고 이 network는 RPN을 initialize하는데 활용됩니다.
+> - RPN을 먼저 학습하고, proposals을 Fast R-CNN 학습에 활용합니다.
+> - network는 Fast R-CNN에 의해 tuning되고 이 network는 RPN을 initialize하는데 활용됩니다.
 
  Altenating training의 과정은 아래와 같이 4 step으로 이루어져 있습니다.
- 1. **RPN training**: region proposal task를 통해 ImageNet을 학습한다.
+1. **RPN training**: region proposal task를 통해 ImageNet을 학습한다.
 2. **Fast R-CNN training**: RPN의 결과를 통해 detection net을 학습한다.
 3. **Detection net은 fixed, RPN으로 fine-tune**
 4. **RPN은 fixed, Fast R-CNN fine tuning**
@@ -85,13 +85,13 @@ RPN을 통해 region proposals를 추출하고, Fast R-CNN을 통해 Detection�
 
 구조가 다소 복잡하기 때문에 코드는 크게 7가지 Part로 나누었습니다. 
 >1. Dataset
-2. Feature Extraction
-3. Anchor Generation layer
-4. Anchor Target layer
-5. RPN
-6. Multi-task Loss
-7. Proposal layer
-8. Fast R-CNN
+>2. Feature Extraction
+>3. Anchor Generation layer
+>4. Anchor Target layer
+>5. RPN
+>6. Multi-task Loss
+>7. Proposal layer
+>8. Fast R-CNN
 
 ### 1. Dataset
 본 코드를 리뷰할 때는 VOC Detection 2007 Dataset을 활용하였습니다. Dataset 속의 image가 size가 각각 다르기 때문에 이를 800*800의 크기로 resize 하여 Feature extraction에 용이하게 바꿔주었습니다. 
