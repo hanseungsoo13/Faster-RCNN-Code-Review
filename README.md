@@ -61,7 +61,8 @@ Main IDEA1에서 우리는 Region proposals을 추출했습니다. 이제 RoI Po
 
 #### RoI Pooling
 RoI Pooling은 Fast R-CNN 논문에서 제안된 알고리즘으로 region proposal의 크기가 일정하지 않다보니 일정한 비율로만 Pooling 효과를 갖는 Max Pooling을 적용하지 못하는 한계점을 극복하기 위해 제안되었습니다. 
-<img src="blob:https://velog.io/9cda1b93-c388-4ccd-b601-5b5fb3d8b89d" width="60%" height="60%">
+![roi pooling](https://github.com/hanseungsoo13/Faster-RCNN-Code-Review/assets/75753717/1ca920d4-1ced-4b43-85dc-2f18aee99602)
+
 위의 그림에서도 볼 수 있듯이 input image에 h,w 비율에 구애받지 않고 pooling 연산을 통해 2*2의 Result를 추출할 수 있습니다. 논문에서는 이 **RoI Pooling을 통해 RPN을 통해 추출한 Region proposal들을 일정한 크기로 변환하여 이후 Fast RCNN에 input될 수 있는 Feature Map을 생성**하였습니다.
 
 #### Sharing Features for RPN and Fast R-CNN
