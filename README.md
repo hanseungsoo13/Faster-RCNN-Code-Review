@@ -18,7 +18,7 @@ Faster R-CNN의 전체적인 과정은 위의 그림에서 볼 수 있듯이 다
 
 #### Anchor Box
 
-<img src="blob:https://velog.io/3d3400af-7794-4f62-89c7-9c5f52ff9ceb" width="60%" height="60%">
+![anchor box](https://github.com/hanseungsoo13/Faster-RCNN-Code-Review/assets/75753717/6224ee3d-94f2-48b5-8d29-f6d0afac402f)
 
 Anchor Box는 오른쪽에 보이는 것과 같이 **image에 일정 간격으로 grid를 나누고 이 grid의 가로, 세로로 aspect와 scale을 조절하여 생성된 region proposal의 후보가 될 box**들을 의미합니다. 논문에서는 한 grid 당 **3가지 aspect**와 **3가지 scale**을 가지는 총 9개의 anchor box를 생성하였습니다.
 
